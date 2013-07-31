@@ -22,6 +22,7 @@
   "dependencies": {
     "adm-zip": "~0.4.3",
     "kew": "~0.1.7",
+    "mkdirp": "~0.3.5",
     "npmconf": "~0.1.2",
     "phantomjs": "~1.9.1-0",
     "tmp": "~0.0.20"
