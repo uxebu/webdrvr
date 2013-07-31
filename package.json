@@ -4,9 +4,11 @@
   "keywords": [
     "webdriver",
     "selenium",
-    "automation"
+    "automation",
+    "chromedriver",
+    "iedriver"
   ],
-  "description": "NPM wrapper for installing / setting up Selenium / Chromedriver / PhantomJS",
+  "description": "NPM wrapper for Selenium / Chromedriver / PhantomJS",
   "homepage": "https://github.com/uxebu/webdriver-setup",
   "repository": {
     "type": "git",
