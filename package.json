@@ -1,0 +1,33 @@
+{
+  "name": "webdriver-setup",
+  "version": "2.33.0-0",
+  "keywords": [
+    "webdriver",
+    "selenium",
+    "automation"
+  ],
+  "description": "NPM wrapper for installing / setting up Selenium / Chromedriver / PhantomJS",
+  "homepage": "https://github.com/uxebu/webdriver-setup",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/uxebu/webdriver-setup.git"
+  },
+  "main": "lib/phantomjs",
+  "bin": {
+    "webdriver": "./bin/webdriver"
+  },
+  "scripts": {
+    "install": "node install.js"
+  },
+  "dependencies": {
+    "adm-zip": "~0.4.3",
+    "kew": "~0.1.7",
+    "npmconf": "~0.1.2",
+    "phantomjs": "~1.9.1-0",
+    "tmp": "~0.0.20"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.8"
+  }
+}
