@@ -4,11 +4,14 @@
   "keywords": [
     "webdriver",
     "selenium",
+    "testing",
     "automation",
     "chromedriver",
-    "iedriver"
+    "iedriver",
+    "phantomjs",
+    "ghostdriver"
   ],
-  "description": "NPM wrapper for Selenium / Chromedriver / PhantomJS",
+  "description": "NPM wrapper for Selenium Webdriver including Chromedriver / IEDriver / Ghostdriver",
   "homepage": "https://github.com/uxebu/webdriver-setup",
   "repository": {
     "type": "git",
