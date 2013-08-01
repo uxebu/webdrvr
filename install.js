@@ -10,7 +10,7 @@ var kew = require('kew');
 var mkdirp = require('mkdirp');
 var npmconf = require('npmconf');
 
-var webdriver = require('./lib/index.js');
+var webdriver = require('./lib/index.js')(process);
 
 npmconf.load(function(err, conf) {
   if (err) {
