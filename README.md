@@ -41,11 +41,11 @@ childProcess.execFile('java', childArgs, function(err, stdout, stderr) {
 ## Running via [selenium-webdriver](https://npmjs.org/package/selenium-webdriver)
 
 ~~~js
-var seleniumWebdriver = require('selenium-webdriver');
+var remote = require('selenium-webdriver/remote');
 var webdriver = require('webdriver')(process);
 
 // further options: https://code.google.com/p/selenium/source/browse/javascript/node/selenium-webdriver/remote/index.js#30
-var server = new remote.SeleniumServer({
+var server = new webdriver.SeleniumServer({
   jar: webdriver.selenium.path,
   args: webdriver.args
 });
