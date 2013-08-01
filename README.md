@@ -26,13 +26,9 @@ bin/webdriver [selenium arguments] // see "bin/webdriver -h" for possible argume
 ~~~js
 var childProcess = require('child_process');
 var webdriver = require('webdriver');
-var childArgs = webdriver.selenium.args
-  .concat(webdriver.chromedriver.args)
-  .concat(webdriver.phantomjs.args)
-  .concat(webdriver.iedriver.args)
-  .concat([
-    'Other Selenium args that should be passed'
-  ]);
+var childArgs = webdriver.execArgs.concat([
+  'Other Selenium args that should be passed'
+]);
 
 childProcess.execFile(webdriver.execFile, childArgs, function(err, stdout, stderr) {
   // server got started

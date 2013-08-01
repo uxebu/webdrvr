@@ -3,11 +3,7 @@
 var path = require('path');
 var spawn = require('child_process').spawn;
 var webdriver = require(path.join(__dirname, '..', 'lib', 'index.js'));
-var args = webdriver.selenium.args
-  .concat(webdriver.chromedriver.args)
-  .concat(webdriver.phantomjs.args)
-  .concat(webdriver.iedriver.args)
-  .concat(process.argv.slice(2));
+var args = webdriver.execArgs.concat(process.argv.slice(2));
 
 var childProcess = spawn(
   webdriver.execFile,
