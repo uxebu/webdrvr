@@ -5,7 +5,7 @@ var seleniumWebdriver = require('selenium-webdriver');
 var webdriver = require('../lib/index.js')(process);
 
 describe('bin/webdriver', function() {
-  
+
   var webdriverBin = path.join(__dirname, '..', 'bin', 'webdriver');
 
   it('starts a webdriver server on port 59478', function(done) {
@@ -18,8 +18,12 @@ describe('bin/webdriver', function() {
       }
     });
   }, 10000);
-  
-  it('executes a google search for "webdriver" with phantomjs', function(done) {
+
+});
+
+describe('selenium-webdriver', function() {
+
+  it('executes a google search for "webdriver" with phantomjs using the installed binaries', function(done) {
     var capabilities = {browserName: 'phantomjs'};
     var server = new seleniumRemote.SeleniumServer({
       jar: webdriver.selenium.path,
@@ -41,7 +45,7 @@ describe('bin/webdriver', function() {
           done();
         });
       });
-      
+
     });
   }, 20000);
 
