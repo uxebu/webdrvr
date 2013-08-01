@@ -38,8 +38,10 @@ npmconf.load(function(err, conf) {
     })
   }
   promise.then(function() {
-    fs.createReadStream(path.join(tmpPath, path.basename(webdriver.selenium.downloadUrl)))
-      .pipe(fs.createWriteStream(webdriver.selenium.path));
+    return copyFile(
+      path.join(tmpPath, path.basename(webdriver.selenium.downloadUrl)),
+      webdriver.selenium.path
+    );
   });
 
   if (!fs.existsSync(path.join(tmpPath, path.basename(webdriver.chromedriver.downloadUrl)))) {
@@ -128,6 +130,18 @@ function downloadFile(proxy, downloadUrl, downloadPath) {
   return requestBinary(getRequestOptions(proxy, downloadUrl), downloadPath);
 }
 
+function copyFile(fromFilePath, toFilePath) {
+  var deferred = kew.defer();
+  var writeStream = fs.createWriteStream(toFilePath);
+  writeStream.on('finish', function() {
+    deferred.resolve(true);
+  }).on('error', function(error) {
+    deferred.reject(new Error('Error copying file: ' + error));
+  });
+  fs.createReadStream(fromFilePath).pipe(writeStream)
+  return deferred;
+}
+
 function getRequestOptions(proxyUrl, downloadUrl) {
   if (proxyUrl) {
     var options = url.parse(proxyUrl);
@@ -172,8 +186,11 @@ function requestBinary(requestOptions, filePath) {
         console.log('Received ' + Math.floor(count / 1024) + 'K total.');
         fs.closeSync(outFile);
         // just write the final file when download was completed
-        fs.createReadStream(tmpFilePath).pipe(fs.createWriteStream(filePath));
-        deferred.resolve(true);
+        copyFile(tmpFilePath, filePath).then(function() {
+          deferred.resolve(true);
+        }).fail(function(error) {
+          deferred.reject(error);
+        });
       })
 
     } else {
