@@ -189,7 +189,7 @@ function extractDownload(filePath, extractToPath) {
   var deferred = kew.defer();
   var options = {cwd: extractToPath};
 
-  console.log('Extracting zip contents');
+  console.log('Extracting zip contents of ' + filePath);
   try {
     var zip = new AdmZip(filePath);
     zip.extractAllTo(extractToPath, true);
@@ -206,7 +206,7 @@ function fixFilePermissions(filePath) {
     var stat = fs.statSync(filePath);
     // 64 == 0100 (no octal literal in strict mode)
     if (!(stat.mode & 64)) {
-      console.log('Fixing file permissions');
+      console.log('Fixing file permissions of ' + filePath);
       fs.chmodSync(filePath, '755');
     }
   }

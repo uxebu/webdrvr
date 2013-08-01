@@ -3,10 +3,13 @@
 var path = require('path');
 var spawn = require('child_process').spawn;
 var webdriver = require(path.join(__dirname, '..', 'lib', 'index.js'));
-var args = webdriver.execArgs.concat(process.argv.slice(2));
+var args = webdriver.args.concat(
+  ['-jar', webdriver.selenium.path],
+  process.argv.slice(2)
+);
 
 var childProcess = spawn(
-  webdriver.execFile,
+  'java',
   args, {
     stdio: 'inherit'
   }

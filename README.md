@@ -21,17 +21,43 @@ IEDriver and PhantomJS. As new versions are released and vetted, this module wil
 bin/webdriver [selenium arguments] // see "bin/webdriver -h" for possible arguments
 ~~~
 
-## Running via node
+## Running via node (using `child_process`)
 
 ~~~js
 var childProcess = require('child_process');
 var webdriver = require('webdriver');
-var childArgs = webdriver.execArgs.concat([
-  'Other Selenium args that should be passed'
+var childArgs = webdriver.args.concat([
+  '-jar', webdriver.selenium.path
+  '-p', '44524'
+  // further selenium arguments
 ]);
 
-childProcess.execFile(webdriver.execFile, childArgs, function(err, stdout, stderr) {
+childProcess.execFile('java', childArgs, function(err, stdout, stderr) {
   // server got started
 });
-
 ~~~
+
+## Running via [selenium-webdriver](https://npmjs.org/package/selenium-webdriver)
+
+~~~js
+var seleniumWebdriver = require('selenium-webdriver');
+var webdriver = require('webdriver');
+
+// further options: https://code.google.com/p/selenium/source/browse/javascript/node/selenium-webdriver/remote/index.js#30
+var server = new remote.SeleniumServer({
+  jar: webdriver.selenium.path,
+  args: webdriver.args
+});
+server.start().then(function(url) {
+  console.log('Selenium standalone server started at ' + url);
+});
+// stopping the server
+// server.stop();
+~~~
+
+## Versioning
+
+The NPM package version tracks the version of Selenium that will be installed, with an additional build number that
+is used for revisions of the installer.
+
+As such 2.33.0-0 and 2.33.0-1 will both install Selenium 2.33.0 but the latter has newer changes to the installer.
