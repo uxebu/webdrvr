@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git://github.com/uxebu/webdriver-setup.git"
   },
-  "main": "lib/phantomjs",
+  "main": "lib/index.js",
   "bin": {
     "webdriver": "./bin/webdriver"
   },
