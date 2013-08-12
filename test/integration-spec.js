@@ -24,15 +24,13 @@ describe('bin/webdriver', function() {
 describe('selenium-webdriver', function() {
 
   it('executes a google search for "webdriver" with phantomjs using the installed binaries', function(done) {
-    var capabilities = {browserName: 'phantomjs'};
-    var server = new seleniumRemote.SeleniumServer({
-      jar: webdriver.selenium.path,
+    var server = new seleniumRemote.SeleniumServer(webdriver.selenium.path, {
       args: webdriver.args
     });
     server.start().then(function(url) {
       var driver = new seleniumWebdriver.Builder()
         .usingServer(url)
-        .withCapabilities(capabilities)
+        .withCapabilities(seleniumWebdriver.Capabilities.phantomjs())
         .build();
 
       driver.get('http://www.google.de');

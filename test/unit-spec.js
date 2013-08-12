@@ -60,9 +60,9 @@ describe('webdriver', function() {
   describe('selenium property', function() {
     it('provides version, installation path, download URL of selenium', function() {
       expect(webdriverModule().selenium).toEqual({
-        version: '2.33.0',
+        version: '2.34.0',
         path: '/webdriver-dir/lib/../vendor/selenium.jar',
-        downloadUrl: 'http://selenium.googlecode.com/files/selenium-server-standalone-2.33.0.jar',
+        downloadUrl: 'http://selenium.googlecode.com/files/selenium-server-standalone-2.34.0.jar',
         args: [ '-jar', '/webdriver-dir/lib/../vendor/selenium.jar' ]
       });
     });
@@ -72,7 +72,7 @@ describe('webdriver', function() {
 
     describe('version property', function() {
       it('provides the current chromedriver version', function() {
-        expect(webdriverModule().chromedriver.version).toBe('2.1');
+        expect(webdriverModule().chromedriver.version).toBe('2.2');
       });
     });
 
@@ -93,22 +93,22 @@ describe('webdriver', function() {
     describe('downloadUrl property', function() {
       it('provides the downloadUrl for linux 32bit', function() {
         expect(webdriverModule({platform: 'linux', arch: 'ia32'}).chromedriver.downloadUrl).toBe(
-          'http://chromedriver.googlecode.com/files/chromedriver_linux32_2.1.zip'
+          'http://chromedriver.googlecode.com/files/chromedriver_linux32_2.2.zip'
         );
       });
       it('provides the downloadUrl for linux 64bit', function() {
         expect(webdriverModule({platform: 'linux', arch: 'x64'}).chromedriver.downloadUrl).toBe(
-          'http://chromedriver.googlecode.com/files/chromedriver_linux64_2.1.zip'
+          'http://chromedriver.googlecode.com/files/chromedriver_linux64_2.2.zip'
         );
       });
       it('provides the downloadUrl for mac osx', function() {
         expect(webdriverModule({platform: 'darwin'}).chromedriver.downloadUrl).toBe(
-          'http://chromedriver.googlecode.com/files/chromedriver_mac32_2.1.zip'
+          'http://chromedriver.googlecode.com/files/chromedriver_mac32_2.2.zip'
         );
       });
       it('provides the downloadUrl for windows', function() {
         expect(webdriverModule({platform: 'win32'}).chromedriver.downloadUrl).toBe(
-          'http://chromedriver.googlecode.com/files/chromedriver_win32_2.1.zip'
+          'http://chromedriver.googlecode.com/files/chromedriver_win32_2.2.zip'
         );
       });
     });
@@ -119,7 +119,7 @@ describe('webdriver', function() {
 
     describe('version property', function() {
       it('provides the current iedriver version', function() {
-        expect(webdriverModule().iedriver.version).toBe('2.33.0');
+        expect(webdriverModule().iedriver.version).toBe('2.34.0');
       });
     });
 
@@ -143,12 +143,12 @@ describe('webdriver', function() {
       });
       it('provides the downloadUrl for Windows 32bit', function() {
         expect(webdriverModule({platform: 'win32', arch: 'ia32'}).iedriver.downloadUrl).toBe(
-          'http://selenium.googlecode.com/files/IEDriverServer_Win32_2.33.0.zip'
+          'http://selenium.googlecode.com/files/IEDriverServer_Win32_2.34.0.zip'
         );
       });
       it('provides the downloadUrl for Windows 64bit', function() {
         expect(webdriverModule({platform: 'win32', arch: 'x64'}).iedriver.downloadUrl).toBe(
-          'http://selenium.googlecode.com/files/IEDriverServer_x64_2.33.0.zip'
+          'http://selenium.googlecode.com/files/IEDriverServer_x64_2.34.0.zip'
         );
       });
     });
