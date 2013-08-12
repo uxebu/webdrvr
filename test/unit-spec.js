@@ -1,8 +1,9 @@
 var requireMock = require('requiremock')(__filename);
+var path = require('path');
 
 describe('webdriver', function() {
 
-  var webdriverModule;
+  var vendorPath, webdriverModule;
 
   beforeEach(function() {
     var phantomjsMock = {
@@ -12,13 +13,7 @@ describe('webdriver', function() {
     requireMock.mock('phantomjs', function(){
       return phantomjsMock;
     });
-    requireMock.mock('path', function() {
-      return {
-        join: function() {
-          return Array.prototype.slice.call(arguments, 0).join('/');
-        }
-      }
-    });
+    vendorPath = path.join('/webdriver-dir', 'lib', '..', 'vendor');
     webdriverModule = requireMock('../lib/index.js', '/webdriver-dir/lib/index.js', '/webdriver-dir/lib');
   });
 
@@ -50,9 +45,9 @@ describe('webdriver', function() {
   describe('args property', function() {
     it('provides all driver arguments that can be passed to selenium.jar', function() {
       expect(webdriverModule().args).toEqual([
-        '-Dwebdriver.chrome.driver=/webdriver-dir/lib/../vendor/chromedriver',
+        '-Dwebdriver.chrome.driver=' + path.join(vendorPath, 'chromedriver'),
         '-Dphantomjs.binary.path=phantomjs',
-        '-Dwebdriver.ie.driver=/webdriver-dir/lib/../vendor/IEDriverServer.exe'
+        '-Dwebdriver.ie.driver=' + path.join(vendorPath, 'IEDriverServer.exe')
       ]);
     });
   });
@@ -61,9 +56,9 @@ describe('webdriver', function() {
     it('provides version, installation path, download URL of selenium', function() {
       expect(webdriverModule().selenium).toEqual({
         version: '2.35.0',
-        path: '/webdriver-dir/lib/../vendor/selenium.jar',
+        path: path.join(vendorPath, 'selenium.jar'),
         downloadUrl: 'http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar',
-        args: [ '-jar', '/webdriver-dir/lib/../vendor/selenium.jar' ]
+        args: ['-jar', path.join(vendorPath, 'selenium.jar')]
       });
     });
   });
@@ -78,14 +73,14 @@ describe('webdriver', function() {
 
     describe('path property', function() {
       it('provides the current chromedriver installation path', function() {
-        expect(webdriverModule().chromedriver.path).toBe('/webdriver-dir/lib/../vendor/chromedriver');
+        expect(webdriverModule().chromedriver.path).toBe(path.join(vendorPath, 'chromedriver'));
       });
     });
 
     describe('args property', function() {
       it('provides the chromedriver command-line arguments for selenium.jar', function() {
         expect(webdriverModule().chromedriver.args).toEqual([
-          '-Dwebdriver.chrome.driver=/webdriver-dir/lib/../vendor/chromedriver'
+          '-Dwebdriver.chrome.driver=' + path.join(vendorPath, 'chromedriver')
         ]);
       });
     });
@@ -125,14 +120,14 @@ describe('webdriver', function() {
 
     describe('path property', function() {
       it('provides the current iedriver installation path', function() {
-        expect(webdriverModule().iedriver.path).toBe('/webdriver-dir/lib/../vendor/IEDriverServer.exe');
+        expect(webdriverModule().iedriver.path).toBe(path.join(vendorPath, 'IEDriverServer.exe'));
       });
     });
 
     describe('args property', function() {
       it('provides the IEDriver command-line arguments for selenium.jar', function() {
         expect(webdriverModule().iedriver.args).toEqual([
-          '-Dwebdriver.ie.driver=/webdriver-dir/lib/../vendor/IEDriverServer.exe'
+          '-Dwebdriver.ie.driver=' + path.join(vendorPath, 'IEDriverServer.exe')
         ]);
       });
     });
