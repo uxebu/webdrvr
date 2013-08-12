@@ -1,6 +1,6 @@
 {
   "name": "webdriver",
-  "version": "2.34.0-0",
+  "version": "2.35.0-0",
   "keywords": [
     "webdriver",
     "selenium",
@@ -36,7 +36,7 @@
   "devDependencies": {
     "jasmine-node": "~1.11.0",
     "requiremock": "~1.3.3",
-    "selenium-webdriver": "~2.34.0"
+    "selenium-webdriver": "~2.35.0"
   },
   "engines": {
     "node": ">=0.8"

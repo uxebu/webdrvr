@@ -60,9 +60,9 @@ describe('webdriver', function() {
   describe('selenium property', function() {
     it('provides version, installation path, download URL of selenium', function() {
       expect(webdriverModule().selenium).toEqual({
-        version: '2.34.0',
+        version: '2.35.0',
         path: '/webdriver-dir/lib/../vendor/selenium.jar',
-        downloadUrl: 'http://selenium.googlecode.com/files/selenium-server-standalone-2.34.0.jar',
+        downloadUrl: 'http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar',
         args: [ '-jar', '/webdriver-dir/lib/../vendor/selenium.jar' ]
       });
     });
@@ -119,7 +119,7 @@ describe('webdriver', function() {
 
     describe('version property', function() {
       it('provides the current iedriver version', function() {
-        expect(webdriverModule().iedriver.version).toBe('2.34.0');
+        expect(webdriverModule().iedriver.version).toBe('2.35.0');
       });
     });
 
@@ -143,12 +143,12 @@ describe('webdriver', function() {
       });
       it('provides the downloadUrl for Windows 32bit', function() {
         expect(webdriverModule({platform: 'win32', arch: 'ia32'}).iedriver.downloadUrl).toBe(
-          'http://selenium.googlecode.com/files/IEDriverServer_Win32_2.34.0.zip'
+          'http://selenium.googlecode.com/files/IEDriverServer_Win32_2.35.0.zip'
         );
       });
       it('provides the downloadUrl for Windows 64bit', function() {
         expect(webdriverModule({platform: 'win32', arch: 'x64'}).iedriver.downloadUrl).toBe(
-          'http://selenium.googlecode.com/files/IEDriverServer_x64_2.34.0.zip'
+          'http://selenium.googlecode.com/files/IEDriverServer_x64_2.35.0.zip'
         );
       });
     });
