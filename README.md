@@ -26,7 +26,7 @@ bin/webdriver [selenium arguments] // see "bin/webdriver -h" for possible argume
 ~~~js
 var childProcess = require('child_process');
 // passing information about current environment
-var webdriver = require('webdriver')(process);
+var webdriver = require('webdriver');
 var childArgs = webdriver.args.concat([
   '-jar', webdriver.selenium.path
   '-p', '44524'
@@ -42,11 +42,10 @@ childProcess.execFile('java', childArgs, function(err, stdout, stderr) {
 
 ~~~js
 var remote = require('selenium-webdriver/remote');
-var webdriver = require('webdriver')(process);
+var webdriver = require('webdriver');
 
 // further options: https://code.google.com/p/selenium/source/browse/javascript/node/selenium-webdriver/remote/index.js#30
-var server = new webdriver.SeleniumServer({
-  jar: webdriver.selenium.path,
+var server = new webdriver.SeleniumServer(webdriver.selenium.path, {
   args: webdriver.args
 });
 server.start().then(function(url) {

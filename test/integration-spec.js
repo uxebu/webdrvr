@@ -2,7 +2,7 @@ var childProcess = require('child_process');
 var path = require('path');
 var seleniumRemote = require('selenium-webdriver/remote');
 var seleniumWebdriver = require('selenium-webdriver');
-var webdriver = require('../lib/index.js')(process);
+var webdriver = require('../lib/index.js');
 
 describe('bin/webdriver', function() {
 
