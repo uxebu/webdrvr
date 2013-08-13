@@ -4,7 +4,7 @@ An NPM wrapper for [Selenium Webdriver](http://code.google.com/p/selenium/), a b
 including [Chromedriver](http://code.google.com/p/chromedriver/), [IEDriver](http://code.google.com/p/selenium/wiki/InternetExplorerDriver)
 (when applicable) and [Ghostdriver](https://github.com/detro/ghostdriver) (which is part of [PhantomJS](http://phantomjs.org/)).
 
-Thanks to https://github.com/Obvious/phantomjs for the process how to download / handle varying binaries in node.
+Thanks to https://github.com/Obvious/phantomjs for the process how to download / handle varying binaries using NPM.
 
 ## Building and installing
 
