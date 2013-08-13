@@ -45,6 +45,6 @@ describe('selenium-webdriver', function() {
       });
 
     });
-  }, 20000);
+  }, 30000);
 
 });
