@@ -21,6 +21,11 @@
   "bin": {
     "webdriver": "./bin/webdriver"
   },
+  "author": {
+    "name": "Tobias von Klipstein",
+    "email": "tk@uxebu.com"
+  },
+  "license": "MIT",
   "scripts": {
     "install": "node install.js",
     "test": "jasmine-node test"
