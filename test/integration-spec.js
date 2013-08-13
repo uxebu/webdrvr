@@ -46,6 +46,6 @@ console.log('selenium server started.');
       });
 
     });
-  }, 40000);
+  }, 60000);
 
 });
