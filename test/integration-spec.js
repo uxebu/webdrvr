@@ -25,10 +25,10 @@ describe('selenium-webdriver', function() {
 
   it('executes a google search for "webdriver" with phantomjs using the installed binaries', function(done) {
     var server = new seleniumRemote.SeleniumServer(webdriver.selenium.path, {
-      args: webdriver.args
+      args: webdriver.args,
+      port: 8123
     });
     server.start().then(function(url) {
-console.log('selenium server started.');
       var driver = new seleniumWebdriver.Builder()
         .usingServer(url)
         .withCapabilities(seleniumWebdriver.Capabilities.phantomjs())

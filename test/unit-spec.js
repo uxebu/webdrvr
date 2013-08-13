@@ -9,7 +9,6 @@ describe('webdriver', function() {
 
   describe('phantomjs property', function() {
     it('provides information where to find "phantomjs"', function() {
-console.log('not reached by travis');
       expect(webdriverModule.getWebdriverEnv().phantomjs).toEqual({
         version: phantomjs.version,
         path: phantomjs.path,
