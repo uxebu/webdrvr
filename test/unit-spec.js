@@ -1,21 +1,11 @@
-var SandboxedModule = require('sandboxed-module');
-
 var path = require('path');
 var phantomjs = require('phantomjs');
 
+var webdriverLibPath = path.dirname(require.resolve('../lib/index.js'));
+var webdriverModule = require('../lib/index.js');
+var vendorPath = path.join(webdriverLibPath, '..', 'vendor');
+
 describe('webdriver', function() {
-
-  var vendorPath, webdriverModule;
-
-  beforeEach(function() {
-    webdriverModule = SandboxedModule.require('../lib/index.js', {
-      locals: {
-        __filename: path.join('webdriver-dir', 'lib', 'index.js'),
-        __dirname: path.join('webdriver-dir', 'lib')
-      }
-    });
-    vendorPath = path.join('webdriver-dir', 'lib', '..', 'vendor');
-  });
 
   describe('phantomjs property', function() {
     it('provides information where to find "phantomjs"', function() {
