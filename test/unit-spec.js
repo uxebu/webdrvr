@@ -104,7 +104,7 @@ describe('webdriver', function() {
 
     describe('version property', function() {
       it('provides the current iedriver version', function() {
-        expect(webdriverModule.getWebdriverEnv().iedriver.version).toBe('2.35.0');
+        expect(webdriverModule.getWebdriverEnv().iedriver.version).toBe('2.35.1');
       });
     });
 
@@ -128,12 +128,12 @@ describe('webdriver', function() {
       });
       it('provides the downloadUrl for Windows 32bit', function() {
         expect(webdriverModule.getWebdriverEnv({platform: 'win32', arch: 'ia32'}).iedriver.downloadUrl).toBe(
-          'http://selenium.googlecode.com/files/IEDriverServer_Win32_2.35.0.zip'
+          'http://selenium.googlecode.com/files/IEDriverServer_Win32_2.35.1.zip'
         );
       });
       it('provides the downloadUrl for Windows 64bit', function() {
         expect(webdriverModule.getWebdriverEnv({platform: 'win32', arch: 'x64'}).iedriver.downloadUrl).toBe(
-          'http://selenium.googlecode.com/files/IEDriverServer_x64_2.35.0.zip'
+          'http://selenium.googlecode.com/files/IEDriverServer_x64_2.35.1.zip'
         );
       });
     });
