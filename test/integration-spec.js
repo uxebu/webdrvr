@@ -28,6 +28,7 @@ describe('selenium-webdriver', function() {
       args: webdriver.args
     });
     server.start().then(function(url) {
+console.log('selenium server started.');
       var driver = new seleniumWebdriver.Builder()
         .usingServer(url)
         .withCapabilities(seleniumWebdriver.Capabilities.phantomjs())
