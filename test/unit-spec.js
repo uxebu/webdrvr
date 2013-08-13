@@ -1,20 +1,14 @@
 var SandboxedModule = require('sandboxed-module');
 
 var path = require('path');
+var phantomjs = require('phantomjs');
 
 describe('webdriver', function() {
 
   var vendorPath, webdriverModule;
 
   beforeEach(function() {
-    var phantomjsMock = {
-      version: '1.9.1',
-      path: 'phantomjs'
-    };
     webdriverModule = SandboxedModule.require('../lib/index.js', {
-      requires: {
-        phantomjs: phantomjsMock
-      },
       locals: {
         __filename: path.join('webdriver-dir', 'lib', 'index.js'),
         __dirname: path.join('webdriver-dir', 'lib')
@@ -26,9 +20,9 @@ describe('webdriver', function() {
   describe('phantomjs property', function() {
     it('provides information where to find "phantomjs"', function() {
       expect(webdriverModule.getWebdriverEnv().phantomjs).toEqual({
-        version: '1.9.1',
-        path: 'phantomjs',
-        args: [ '-Dphantomjs.binary.path=phantomjs' ]
+        version: phantomjs.version,
+        path: phantomjs.path,
+        args: ['-Dphantomjs.binary.path=' + phantomjs.path]
       });
     });
   });
@@ -52,7 +46,7 @@ describe('webdriver', function() {
     it('provides all driver arguments that can be passed to selenium.jar', function() {
       expect(webdriverModule.getWebdriverEnv().args).toEqual([
         '-Dwebdriver.chrome.driver=' + path.join(vendorPath, 'chromedriver'),
-        '-Dphantomjs.binary.path=phantomjs',
+        '-Dphantomjs.binary.path=' + phantomjs.path,
         '-Dwebdriver.ie.driver=' + path.join(vendorPath, 'IEDriverServer.exe')
       ]);
     });
