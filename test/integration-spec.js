@@ -11,7 +11,7 @@ describe('bin/webdriver', function() {
   it('starts a webdriver server on port 59478', function(done) {
     var webdriverProcess = childProcess.spawn(webdriverBin, ['-port', '59478']);
     webdriverProcess.stdout.on('data', function (data) {
-      if (data.toString().indexOf(':59478/wd/hub') > 0) {
+      if (data.toString().indexOf('Started SocketListener on 0.0.0.0:59478') > 0) {
         expect(true).toBe(true);
         webdriverProcess.kill();
         done();
@@ -25,8 +25,7 @@ describe('selenium-webdriver', function() {
 
   it('executes a google search for "webdriver" with phantomjs using the installed binaries', function(done) {
     var server = new seleniumRemote.SeleniumServer(webdriver.selenium.path, {
-      args: webdriver.args,
-      stdio: 'inherit'
+      args: webdriver.args
     });
 
     var onError = function(err) {
