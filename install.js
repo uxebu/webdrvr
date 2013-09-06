@@ -37,7 +37,7 @@ npmconf.load(function(err, conf) {
       );
     })
   }
-  promise.then(function() {
+  promise = promise.then(function() {
     return copyFile(
       path.join(tmpPath, path.basename(webdriver.selenium.downloadUrl)),
       webdriver.selenium.path
@@ -53,7 +53,7 @@ npmconf.load(function(err, conf) {
       );
     });
   }
-  promise.then(function() {
+  promise = promise.then(function() {
     return extractDownload(
       path.join(tmpPath, path.basename(webdriver.chromedriver.downloadUrl)),
       path.dirname(webdriver.chromedriver.path)
@@ -132,13 +132,26 @@ function downloadFile(proxy, downloadUrl, downloadPath) {
 
 function copyFile(fromFilePath, toFilePath) {
   var deferred = kew.defer();
+  var toFileFolder = path.dirname(toFilePath);
+
+  // ensure that the vendor folder is there
+  try {
+    fs.mkdirSync(toFileFolder);
+  } catch(error) {
+    deferred.reject(new Error('Error creating folder "' + toFileFolder + '": ' + error));
+    return;
+  }
+
   var writeStream = fs.createWriteStream(toFilePath);
+  writeStream.on('open', function() {
+    fs.createReadStream(fromFilePath).pipe(writeStream);
+  });
   writeStream.on('finish', function() {
     deferred.resolve(true);
   }).on('error', function(error) {
     deferred.reject(new Error('Error copying file: ' + error));
   });
-  fs.createReadStream(fromFilePath).pipe(writeStream)
+
   return deferred;
 }
 
