@@ -134,6 +134,11 @@ function copyFile(fromFilePath, toFilePath) {
   var deferred = kew.defer();
   var toFileFolder = path.dirname(toFilePath);
 
+  // ensure that the destination folder exists
+  try {
+    fs.mkdirSync(toFileFolder);
+  } catch(error) {}
+
   var writeStream = fs.createWriteStream(toFilePath);
   writeStream.on('open', function() {
     fs.createReadStream(fromFilePath).pipe(writeStream);
