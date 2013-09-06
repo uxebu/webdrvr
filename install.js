@@ -134,19 +134,10 @@ function copyFile(fromFilePath, toFilePath) {
   var deferred = kew.defer();
   var toFileFolder = path.dirname(toFilePath);
 
-  // ensure that the vendor folder is there
-  try {
-    fs.mkdirSync(toFileFolder);
-  } catch(error) {
-    deferred.reject(new Error('Error creating folder "' + toFileFolder + '": ' + error));
-    return;
-  }
-
   var writeStream = fs.createWriteStream(toFilePath);
   writeStream.on('open', function() {
     fs.createReadStream(fromFilePath).pipe(writeStream);
-  });
-  writeStream.on('finish', function() {
+  }).on('finish', function() {
     deferred.resolve(true);
   }).on('error', function(error) {
     deferred.reject(new Error('Error copying file: ' + error));
