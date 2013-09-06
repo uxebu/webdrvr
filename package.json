@@ -1,5 +1,5 @@
 {
-  "name": "webdriver",
+  "name": "webdrvr",
   "version": "2.35.0-1",
   "keywords": [
     "webdriver",
@@ -12,14 +12,14 @@
     "ghostdriver"
   ],
   "description": "NPM wrapper for Selenium Webdriver including Chromedriver / IEDriver / Ghostdriver",
-  "homepage": "https://github.com/uxebu/webdriver-setup",
+  "homepage": "https://github.com/uxebu/webdrvr",
   "repository": {
     "type": "git",
-    "url": "git://github.com/uxebu/webdriver-setup.git"
+    "url": "git://github.com/uxebu/webdrvr.git"
   },
   "main": "lib/index.js",
   "bin": {
-    "webdriver": "./bin/webdriver"
+    "webdriver": "./bin/webdrvr"
   },
   "author": {
     "name": "Tobias von Klipstein",

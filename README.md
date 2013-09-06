@@ -1,6 +1,6 @@
-# webdriver
+# webdrvr
 
-[![Build Status](https://travis-ci.org/uxebu/webdriver.png)](https://travis-ci.org/uxebu/webdriver)
+[![Build Status](https://travis-ci.org/uxebu/webdrvr.png)](https://travis-ci.org/uxebu/webdrvr)
 
 An NPM wrapper for [Selenium Webdriver](http://code.google.com/p/selenium/), a browser automation framework
 including [Chromedriver](http://code.google.com/p/chromedriver/), [IEDriver](http://code.google.com/p/selenium/wiki/InternetExplorerDriver)
@@ -11,7 +11,7 @@ Thanks to https://github.com/Obvious/phantomjs for the process how to download /
 ## Building and installing
 
 ~~~bash
-npm install webdriver
+npm install webdrvr
 ~~~
 
 What this is really doing is just grabbing a particular "blessed" (by this module) version of Selenium, Chromedriver,
@@ -20,7 +20,7 @@ IEDriver and PhantomJS. As new versions are released and vetted, this module wil
 ## Running
 
 ~~~bash
-bin/webdriver [selenium arguments] // see "bin/webdriver -h" for possible arguments
+bin/webdrvr [selenium arguments] // see "bin/webdrvr -h" for possible arguments
 ~~~
 
 ## Running via node (using `child_process`)
@@ -28,9 +28,9 @@ bin/webdriver [selenium arguments] // see "bin/webdriver -h" for possible argume
 ~~~js
 var childProcess = require('child_process');
 // passing information about current environment
-var webdriver = require('webdriver');
-var childArgs = webdriver.args.concat([
-  '-jar', webdriver.selenium.path
+var webdrvr = require('webdrvr');
+var childArgs = webdrvr.args.concat([
+  '-jar', webdrvr.selenium.path
   '-p', '44524'
   // further selenium arguments
 ]);
@@ -44,11 +44,11 @@ childProcess.execFile('java', childArgs, function(err, stdout, stderr) {
 
 ~~~js
 var remote = require('selenium-webdriver/remote');
-var webdriver = require('webdriver');
+var webdrvr = require('webdrvr');
 
 // further options: https://code.google.com/p/selenium/source/browse/javascript/node/selenium-webdriver/remote/index.js#30
-var server = new webdriver.SeleniumServer(webdriver.selenium.path, {
-  args: webdriver.args
+var server = new remote.SeleniumServer(webdrvr.selenium.path, {
+  args: webdrvr.args
 });
 server.start().then(function(url) {
   console.log('Selenium standalone server started at ' + url);

@@ -2,14 +2,14 @@ var childProcess = require('child_process');
 var path = require('path');
 var seleniumRemote = require('selenium-webdriver/remote');
 var seleniumWebdriver = require('selenium-webdriver');
-var webdriver = require('../lib/index.js');
+var webdrvr = require('../lib/index.js');
 
-describe('bin/webdriver', function() {
+describe('bin/webdrvr', function() {
 
-  var webdriverBin = path.join(__dirname, '..', 'bin', 'webdriver');
+  var webdrvrBin = path.join(__dirname, '..', 'bin', 'webdrvr');
 
   it('starts a webdriver server on port 59478', function(done) {
-    var webdriverProcess = childProcess.spawn(webdriverBin, ['-port', '59478']);
+    var webdriverProcess = childProcess.spawn(webdrvrBin, ['-port', '59478']);
     webdriverProcess.stdout.on('data', function (data) {
       if (data.toString().indexOf('Started SocketListener on 0.0.0.0:59478') > 0) {
         expect(true).toBe(true);
@@ -24,8 +24,8 @@ describe('bin/webdriver', function() {
 describe('selenium-webdriver', function() {
 
   it('executes a google search for "webdriver" with phantomjs using the installed binaries', function(done) {
-    var server = new seleniumRemote.SeleniumServer(webdriver.selenium.path, {
-      args: webdriver.args
+    var server = new seleniumRemote.SeleniumServer(webdrvr.selenium.path, {
+      args: webdrvr.args
     });
 
     var onError = function(err) {

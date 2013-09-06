@@ -2,9 +2,9 @@
 
 var path = require('path');
 var spawn = require('child_process').spawn;
-var webdriver = require(path.join(__dirname, '..', 'lib', 'index.js'));
-var args = webdriver.args.concat(
-  ['-jar', webdriver.selenium.path],
+var webdrvr = require(path.join(__dirname, '..', 'lib', 'index.js'));
+var args = webdrvr.args.concat(
+  ['-jar', webdrvr.selenium.path],
   process.argv.slice(2)
 );
 
