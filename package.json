@@ -1,6 +1,6 @@
 {
   "name": "webdrvr",
-  "version": "2.35.0-3",
+  "version": "2.35.0-4",
   "keywords": [
     "webdriver",
     "selenium",
@@ -19,7 +19,7 @@
   },
   "main": "lib/index.js",
   "bin": {
-    "webdriver": "./bin/webdrvr"
+    "webdrvr": "./bin/webdrvr"
   },
   "author": {
     "name": "Tobias von Klipstein",
