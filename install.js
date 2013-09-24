@@ -1,9 +1,13 @@
 /* Adapted from https://github.com/Obvious/phantomjs/blob/master/install.js */
 
 var fs = require('fs');
-var http = require('http');
+var httpModule = {
+  http: require('follow-redirects').http,
+  https: require('follow-redirects').https
+};
 var path = require('path');
 var url = require('url');
+var util = require('util');
 
 var AdmZip = require('adm-zip');
 var kew = require('kew');
@@ -35,7 +39,7 @@ npmconf.load(function(err, conf) {
         webdriver.selenium.downloadUrl,
         path.join(tmpPath, path.basename(webdriver.selenium.downloadUrl))
       );
-    })
+    });
   }
   promise = promise.then(function() {
     return copyFile(
@@ -84,16 +88,35 @@ npmconf.load(function(err, conf) {
     });
   }
 
+  if (webdriver.iosdriver.downloadUrl) {
+    if (!fs.existsSync(path.join(tmpPath, path.basename(webdriver.iosdriver.downloadUrl)))) {
+      promise = promise.then(function() {
+        return downloadFile(
+          conf.get('proxy'),
+          webdriver.iosdriver.downloadUrl,
+          path.join(tmpPath, path.basename(webdriver.iosdriver.downloadUrl))
+        );
+      });
+    }
+    promise = promise.then(function() {
+      return copyFile(
+        path.join(tmpPath, path.basename(webdriver.iosdriver.downloadUrl)),
+        webdriver.iosdriver.path
+      );
+    });
+  }
+
   promise.then(function() {
     console.log([
       'Done. Selenium, Chromedriver',
       webdriver.iedriver.downloadUrl ? ', IEDriver' : '',
+      webdriver.iosdriver.downloadUrl ? ', IOSDriver' : '',
       ' available at ',
       path.dirname(webdriver.selenium.path)
     ].join(''));
   })
   .fail(function(err) {
-    console.error('Installation of Selenium, Chromedriver or IEDriver failed', err.stack);
+    console.error('Installation of Selenium, Chromedriver, IEDriver or IOSDriver failed', err.stack);
     process.exit(1);
   })
 });
@@ -178,8 +201,9 @@ function requestBinary(requestOptions, filePath) {
   var filePath = filePath;
   var tmpFilePath = filePath + '.tmp';
   var outFile = fs.openSync(tmpFilePath, 'w');
+  var protocol = requestOptions.protocol.slice(0, requestOptions.protocol.length - 1);
 
-  var client = http.get(requestOptions, function(response) {
+  var client = httpModule[protocol].get(requestOptions, function(response) {
     var status = response.statusCode;
     console.log('Receiving...');
 
