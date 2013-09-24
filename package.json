@@ -11,7 +11,7 @@
     "phantomjs",
     "ghostdriver"
   ],
-  "description": "NPM wrapper for Selenium Webdriver including Chromedriver / IEDriver / Ghostdriver",
+  "description": "NPM wrapper for Selenium Webdriver including Chromedriver / IEDriver / IOSDriver / Ghostdriver",
   "homepage": "https://github.com/uxebu/webdrvr",
   "repository": {
     "type": "git",
