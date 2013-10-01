@@ -130,7 +130,7 @@ function findSuitableTempDirectory(npmTmpDir) {
   ];
 
   for (var i = 0; i < candidateTmpDirs.length; i++) {
-    var candidatePath = path.join(candidateTmpDirs[i], 'webdriver');
+    var candidatePath = path.join(candidateTmpDirs[i], 'webdrvr');
 
     try {
       mkdirp.sync(candidatePath, '0777');
