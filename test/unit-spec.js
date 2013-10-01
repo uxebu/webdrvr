@@ -143,7 +143,7 @@ describe('webdrvr', function() {
   describe('iosdriver property', function() {
     describe('version property', function() {
       it('provides the current iosdriver version', function() {
-        expect(webdrvrModule.getEnv().iosdriver.version).toBe('0.6.4');
+        expect(webdrvrModule.getEnv().iosdriver.version).toBe('0.6.5');
       });
     });
 
@@ -165,7 +165,7 @@ describe('webdrvr', function() {
       });
       it('provides the downloadUrl for Mac', function() {
         expect(webdrvrModule.getEnv({platform: 'darwin'}).iosdriver.downloadUrl).toBe(
-          'https://github.com/ios-driver/ios-driver/releases/download/0.6.4/ios-server-0.6.4-jar-with-dependencies.jar'
+          'https://github.com/ios-driver/ios-driver/releases/download/0.6.5/ios-server-0.6.5-jar-with-dependencies.jar'
         );
       });
     });
