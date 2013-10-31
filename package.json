@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "jasmine-node": "~1.11.0",
-    "selenium-webdriver": "~2.35.0"
+    "selenium-webdriver": "~2.37.0"
   },
   "engines": {
     "node": ">=0.10"
