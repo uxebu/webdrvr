@@ -45,9 +45,9 @@ describe('webdrvr', function() {
   describe('selenium property', function() {
     it('provides version, installation path, download URL of selenium', function() {
       expect(webdrvrModule.getEnv().selenium).toEqual({
-        version: '2.38.0',
+        version: '2.39.0',
         path: path.join(vendorPath, 'selenium.jar'),
-        downloadUrl: 'http://selenium.googlecode.com/files/selenium-server-standalone-2.38.0.jar',
+        downloadUrl: 'http://selenium.googlecode.com/files/selenium-server-standalone-2.39.0.jar',
         args: ['-jar', path.join(vendorPath, 'selenium.jar')]
       });
     });
@@ -57,7 +57,7 @@ describe('webdrvr', function() {
 
     describe('version property', function() {
       it('provides the current chromedriver version', function() {
-        expect(webdrvrModule.getEnv().chromedriver.version).toBe('2.7');
+        expect(webdrvrModule.getEnv().chromedriver.version).toBe('2.9');
       });
     });
 
@@ -78,22 +78,22 @@ describe('webdrvr', function() {
     describe('downloadUrl property', function() {
       it('provides the downloadUrl for linux 32bit', function() {
         expect(webdrvrModule.getEnv({platform: 'linux', arch: 'ia32'}).chromedriver.downloadUrl).toBe(
-          'http://chromedriver.storage.googleapis.com/2.7/chromedriver_linux32.zip'
+          'http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux32.zip'
         );
       });
       it('provides the downloadUrl for linux 64bit', function() {
         expect(webdrvrModule.getEnv({platform: 'linux', arch: 'x64'}).chromedriver.downloadUrl).toBe(
-          'http://chromedriver.storage.googleapis.com/2.7/chromedriver_linux64.zip'
+          'http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip'
         );
       });
       it('provides the downloadUrl for mac osx', function() {
         expect(webdrvrModule.getEnv({platform: 'darwin'}).chromedriver.downloadUrl).toBe(
-          'http://chromedriver.storage.googleapis.com/2.7/chromedriver_mac32.zip'
+          'http://chromedriver.storage.googleapis.com/2.9/chromedriver_mac32.zip'
         );
       });
       it('provides the downloadUrl for windows', function() {
         expect(webdrvrModule.getEnv({platform: 'win32'}).chromedriver.downloadUrl).toBe(
-          'http://chromedriver.storage.googleapis.com/2.7/chromedriver_win32.zip'
+          'http://chromedriver.storage.googleapis.com/2.9/chromedriver_win32.zip'
         );
       });
     });
@@ -104,7 +104,7 @@ describe('webdrvr', function() {
 
     describe('version property', function() {
       it('provides the current iedriver version', function() {
-        expect(webdrvrModule.getEnv().iedriver.version).toBe('2.38.0');
+        expect(webdrvrModule.getEnv().iedriver.version).toBe('2.39.0');
       });
     });
 
@@ -128,12 +128,12 @@ describe('webdrvr', function() {
       });
       it('provides the downloadUrl for Windows 32bit', function() {
         expect(webdrvrModule.getEnv({platform: 'win32', arch: 'ia32'}).iedriver.downloadUrl).toBe(
-          'http://selenium.googlecode.com/files/IEDriverServer_Win32_2.38.0.zip'
+          'http://selenium.googlecode.com/files/IEDriverServer_Win32_2.39.0.zip'
         );
       });
       it('provides the downloadUrl for Windows 64bit', function() {
         expect(webdrvrModule.getEnv({platform: 'win32', arch: 'x64'}).iedriver.downloadUrl).toBe(
-          'http://selenium.googlecode.com/files/IEDriverServer_x64_2.38.0.zip'
+          'http://selenium.googlecode.com/files/IEDriverServer_x64_2.39.0.zip'
         );
       });
     });
