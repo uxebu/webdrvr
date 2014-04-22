@@ -45,9 +45,9 @@ describe('webdrvr', function() {
   describe('selenium property', function() {
     it('provides version, installation path, download URL of selenium', function() {
       expect(webdrvrModule.getEnv().selenium).toEqual({
-        version: '2.40.0',
+        version: '2.41.0',
         path: path.join(vendorPath, 'selenium.jar'),
-        downloadUrl: 'http://selenium-release.storage.googleapis.com/2.40/selenium-server-standalone-2.40.0.jar',
+        downloadUrl: 'http://selenium-release.storage.googleapis.com/2.41/selenium-server-standalone-2.41.0.jar',
         args: ['-jar', path.join(vendorPath, 'selenium.jar')]
       });
     });
@@ -104,7 +104,7 @@ describe('webdrvr', function() {
 
     describe('version property', function() {
       it('provides the current iedriver version', function() {
-        expect(webdrvrModule.getEnv().iedriver.version).toBe('2.40.0');
+        expect(webdrvrModule.getEnv().iedriver.version).toBe('2.41.0');
       });
     });
 
@@ -128,12 +128,12 @@ describe('webdrvr', function() {
       });
       it('provides the downloadUrl for Windows 32bit', function() {
         expect(webdrvrModule.getEnv({platform: 'win32', arch: 'ia32'}).iedriver.downloadUrl).toBe(
-          'http://selenium-release.storage.googleapis.com/2.40/IEDriverServer_Win32_2.40.0.zip'
+          'http://selenium-release.storage.googleapis.com/2.41/IEDriverServer_Win32_2.41.0.zip'
         );
       });
       it('provides the downloadUrl for Windows 64bit', function() {
         expect(webdrvrModule.getEnv({platform: 'win32', arch: 'x64'}).iedriver.downloadUrl).toBe(
-          'http://selenium-release.storage.googleapis.com/2.40/IEDriverServer_x64_2.40.0.zip'
+          'http://selenium-release.storage.googleapis.com/2.41/IEDriverServer_x64_2.41.0.zip'
         );
       });
     });
