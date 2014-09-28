@@ -10,7 +10,7 @@ describe('bin/webdrvr', function() {
 
   it('starts a webdriver server on port 59478', function(done) {
     var webdriverProcess = childProcess.spawn(webdrvrBin, ['-port', '59478']);
-    webdriverProcess.stdout.on('data', function (data) {
+    webdriverProcess.stderr.on('data', function (data) {
       if (data.toString().indexOf('Started SocketListener on 0.0.0.0:59478') > 0) {
         expect(true).toBe(true);
         webdriverProcess.kill();
