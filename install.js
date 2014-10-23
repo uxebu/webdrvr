@@ -124,8 +124,8 @@ npmconf.load(function(err, conf) {
 function findSuitableTempDirectory(npmTmpDir) {
   var now = Date.now();
   var candidateTmpDirs = [
-    process.env.TMPDIR || '/tmp',
-    npmTmpDir,
+    process.env.TMPDIR || npmTmpDir,
+    '/tmp',
     path.join(process.cwd(), 'tmp')
   ];
 
